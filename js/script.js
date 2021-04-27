@@ -7,9 +7,9 @@ project 1 - A Random Quote Generator
   // Check the "Project Resources" section of the project instructions
   // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
 
-/*** 
- * `quotes` array 
-***/
+/**
+ * Store quotes into an array
+ */
 
 const quotes = [
   {
@@ -47,33 +47,61 @@ const quotes = [
 
 
 /***
- * `getRandomQuote` function
+ * Generate a random quote from quote array.
 ***/
 function getRandomQuote() {
   const random = Math.floor(Math.random() * quotes.length);
   return quotes[random];
 }
 
+/**
+ * Generate a random number from 0 to 256
+ * @returns Random Number to randomColor var
+ */
+ const randomColor = () => Math.floor(Math.random() * 256);
+
+/**
+ * Generate a random RGB Color
+ * @param {randomColor} value 
+ * @returns rgb(color, color, color)
+ */
+function randomRGB(value) {
+  const RGB = `rgb(${value()}, ${value()}, ${value()})`;
+  return RGB;
+}
+
+/**
+ * Generate a random RGB value and assign it to body element
+ * @param {color} 
+ * @returns randomRGB to body element
+ */
+function changeBackgroundColor(color) {
+  let body = document.querySelector('body');
+  body.style.backgroundColor = randomRGB(randomColor);
+  return body;
+}
+
 /***
- * `printQuote` function
+ * Display a random quote with its HTML code and print it to the page.
+ * Check if the fields citation and year are filled and display the values if yes
 ***/
 function printQuote() {
-  let rQuote = getRandomQuote();
+  let randomQuote = getRandomQuote();
   let html = `
-              <p class="quote">${rQuote.quote}</p>
-              <p class="source">${rQuote.source}`;
+              <p class="quote">${randomQuote.quote}</p>
+              <p class="source">${randomQuote.source}`;
 
-  if ( rQuote.citation ) {
-    html += `<span class="citation">${rQuote.citation}</span>`;
+  if ( randomQuote.citation ) {
+    html += `<span class="citation">${randomQuote.citation}</span>`;
   }
-  if ( rQuote.year ) {
-    html += `<span class="year">${rQuote.year}</span>`;
+  if ( randomQuote.year ) {
+    html += `<span class="year">${randomQuote.year}</span>`;
   }
 
   html += `</p>`;
   document.getElementById('quote-box').innerHTML = html;
+  changeBackgroundColor();
 }
-
 
 
 /***
@@ -82,3 +110,4 @@ function printQuote() {
 ***/
 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
+document.getElementById('load-quote').addEventListener(setInterval(printQuote, 1000 * 10));

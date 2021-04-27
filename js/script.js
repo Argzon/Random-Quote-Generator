@@ -23,7 +23,7 @@ const quotes = [
     source: "Vera Nazarian",
     citation: "The Perpetual Calendar of Inspiration",
     year: 2010,
-    tags: '#books'
+    tags: '#book'
   },
   {
     quote: "Did you ever wish you had a book that would explain the full meaning of life's random happenings to you?",
@@ -44,6 +44,17 @@ const quotes = [
     year: 2000,
     tags: '#movie'
   },
+  {
+    quote: "Nothing says work efficiency like panic mode.",
+    source: "Don Roff"
+  },
+  {
+    quote: "'Chance' is just a word expressing ignorance”",
+    source: "Richard Dawkins",
+    citation: "The Selfish Gene",
+    year: 1976,
+    tags: '#book'
+  }
 ];
 
 

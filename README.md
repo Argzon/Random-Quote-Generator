@@ -1,2 +1,2 @@
-# unit1-random-quote-generator
-A Random Quote Generator
+# Random Quote Generator #Unit 1
+A Random Quote Generator for Treehouse TechDegree Unit 1

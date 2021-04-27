@@ -22,7 +22,8 @@ const quotes = [
     quote: "Luck is not as random as you think. Before that lottery ticket won the jackpot, someone had to buy it.",
     source: "Vera Nazarian",
     citation: "The Perpetual Calendar of Inspiration",
-    year: 2010
+    year: 2010,
+    tags: '#books'
   },
   {
     quote: "Did you ever wish you had a book that would explain the full meaning of life's random happenings to you?",
@@ -40,7 +41,8 @@ const quotes = [
     quote: "If it doesn't sweat, jiggle, or pant, it's not alive.",
     source: "Phyllis Reynolds Naylor",
     citation: "The Grooming of Alice",
-    year: 2000
+    year: 2000,
+    tags: '#movie'
   },
 ];
 
@@ -97,7 +99,10 @@ function printQuote() {
   if ( randomQuote.year ) {
     html += `<span class="year">${randomQuote.year}</span>`;
   }
-
+  if ( randomQuote.tags ) {
+    html += `<span class="tags">${randomQuote.tags}</span>`;
+  }
+  
   html += `</p>`;
   document.getElementById('quote-box').innerHTML = html;
   changeBackgroundColor();
@@ -110,4 +115,4 @@ function printQuote() {
 ***/
 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
-document.getElementById('load-quote').addEventListener(setInterval(printQuote, 1000 * 10));
+document.getElementById('load-quote').addEventListener(setInterval(printQuote, 1000 * 10), printQuote);

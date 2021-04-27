@@ -49,15 +49,31 @@ const quotes = [
 /***
  * `getRandomQuote` function
 ***/
-
-
+function getRandomQuote() {
+  const random = Math.floor(Math.random() * quotes.length);
+  return quotes[random];
+}
 
 /***
  * `printQuote` function
 ***/
 function printQuote() {
-  
+  let rQuote = getRandomQuote();
+  let html = `
+              <p class="quote">${rQuote.quote}</p>
+              <p class="source">${rQuote.source}`;
+
+  if ( rQuote.citation ) {
+    html += `<span class="citation">${rQuote.citation}</span>`;
+  }
+  if ( rQuote.year ) {
+    html += `<span class="year">${rQuote.year}</span>`;
+  }
+
+  html += `</p>`;
+  document.getElementById('quote-box').innerHTML = html;
 }
+
 
 
 /***
